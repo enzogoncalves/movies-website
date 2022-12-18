@@ -34,16 +34,16 @@ function transformReleaseDate(releaseDate) {
 }
 
 
-const NowPlayingMovie = ({ nowPlayingMovie }) => {
+const UpcomingMovie = ({ upcomingMovie }) => {
   return (
     <C.Movie  >
-      <Link to={`/movie/${nowPlayingMovie.id}`} style={{ textDecoration: 'none', color: '#efefef' }}>
-        <C.MoviePoster src={`https://image.tmdb.org/t/p/w500${nowPlayingMovie.backdrop_path}`} />
-        <C.MovieTitle>{nowPlayingMovie.title}{transformReleaseDate(nowPlayingMovie.release_date)}</C.MovieTitle>
+      <Link to={`/movie/${upcomingMovie.id}`} style={{ textDecoration: 'none', color: '#efefef' }}>
+        <C.MoviePoster src={`https://image.tmdb.org/t/p/w500${upcomingMovie.backdrop_path}`} />
+        <C.MovieTitle>{upcomingMovie.title}{transformReleaseDate(upcomingMovie.release_date)}</C.MovieTitle>
       </Link>
-      <C.MovieDesc>{nowPlayingMovie.overview}</C.MovieDesc>
+      <C.MovieDesc>{upcomingMovie.overview}</C.MovieDesc>
     </C.Movie>
   )
 }
 
-export default NowPlayingMovie
+export default UpcomingMovie

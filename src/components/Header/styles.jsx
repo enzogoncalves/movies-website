@@ -21,7 +21,7 @@ export const Header = styled.header`
 export const Logo = styled.h1`
   font-size: 1.5rem;
   font-weight: 700;
-  margin-right: 6rem;
+  margin-right: 5rem;
 `
 
 export const HeaderList = styled.ul`
@@ -38,4 +38,5 @@ export const HeaderListItem = styled.li`
 export const HeaderListItemLink = styled.a`
   padding: .75rem .5rem;
   font-weight: 500;
+  color: ${props => props.active ? '#efefef' : '#999'};
 `

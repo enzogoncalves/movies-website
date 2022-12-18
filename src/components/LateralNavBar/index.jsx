@@ -7,7 +7,7 @@ const LateralNavBar = ({ items }) => {
     <C.NavBar>
       <C.List>
         {items.map((item, index) => (
-          <ListItem key={index} item={item} index={index}/>
+          <ListItem key={index} item={item} index={index} />
         ))}
       </C.List>
     </C.NavBar>
