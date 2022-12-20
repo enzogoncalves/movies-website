@@ -1,6 +1,6 @@
 import React from 'react'
 import * as C from './styles'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const Header = ({ links }) => {
   return (
@@ -8,13 +8,14 @@ const Header = ({ links }) => {
       <C.Logo>Movies</C.Logo>
       <C.HeaderList>
         {links.map((link, index) => (
-          <Link key={index} to={link.linkTo}>
-            <C.HeaderListItem>
-              <C.HeaderListItemLink active={link.active}>
-                {link.link}
-              </C.HeaderListItemLink>
-            </C.HeaderListItem>
-          </Link>
+          <NavLink key={index} to={link.linkTo} style={({ isActive }) => {
+
+            return isActive
+              ? { padding: '.75rem .5rem', fontWeight: 500, color: "#efefef" }
+              : { padding: '.75rem .5rem', fontWeight: 500, color: "#999" }
+          }}>
+            {link.link}
+          </NavLink>
         ))}
       </C.HeaderList>
     </C.Header>

@@ -1,6 +1,7 @@
 import React from 'react'
 import * as C from './styles'
 import ListItem from '../LateralNavBarListItem'
+import "./style.css"
 
 const LateralNavBar = ({ items }) => {
   return (

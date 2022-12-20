@@ -1,10 +1,8 @@
 import styled from "styled-components";
 
 export const Header = styled.header`
-  grid-area: header;
   height: 70px;
   padding: 1rem .5rem;
-  grid-area: header;
   padding-left: 2rem;
   padding-top: 1rem;
   display: flex;
@@ -29,14 +27,4 @@ export const HeaderList = styled.ul`
   display: flex;
   align-items: center;
   gap: .5rem;
-`
-
-export const HeaderListItem = styled.li`
-  width: max-content;
-`
-
-export const HeaderListItemLink = styled.a`
-  padding: .75rem .5rem;
-  font-weight: 500;
-  color: ${props => props.active ? '#efefef' : '#999'};
 `

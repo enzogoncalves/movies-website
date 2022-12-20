@@ -1,24 +1,22 @@
-import React, { useEffect, useState } from 'react'
-import Header from '../components/Header'
-import LateralNavBar from '../components/LateralNavBar'
-import MovieContent from '../components/MovieContent'
-
+import React from 'react'
+import { Section } from '../components/Section/styles'
+import TrendingMovies from '../components/TrendingMovies'
+import UpComingMovies from '../components/UpComingMovies'
+import TopRatedMovies from '../components/TopRatedMovies'
 
 const Home = () => {
-  const [lateralNavBarItems, setLateralNavBarItems] = useState([])
-  const [headerLinks, setHeaderLinks] = useState([])
-
-  useEffect(() => {
-    setLateralNavBarItems([{ title: 'Home', active: true, linkTo: '/' }, { title: 'Discovery', active: false, linkTo: '/discovery' }, { title: 'Community', active: false, linkTo: 'community' }, { title: 'Search', active: false, linkTo: 'search' }])
-    setHeaderLinks([{ link: 'Home', linkTo: '/', active: true }, { link: 'Series', linkTo: '/series', active: false }, { link: 'TV Show', linkTo: '/tv-shows', active: false }])
-  }, [])
-
   return (
-    <>
-      <Header links={headerLinks} />
-      <LateralNavBar items={lateralNavBarItems} />
-      <MovieContent />
-    </>
+    <Section style={{
+      gridArea: 'movie-content',
+      display: 'grid',
+      gridTemplateColumns: '1fr auto',
+      gridTemplateRows: 'auto 1fr',
+      gridTemplateAreas: `'trending-movies upcoming-movies' 'top-rated-movies upcoming-movies'`
+    }}>
+      <TrendingMovies />
+      <UpComingMovies />
+      <TopRatedMovies />
+    </Section>
   )
 }
 
