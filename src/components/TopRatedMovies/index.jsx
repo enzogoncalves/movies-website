@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom/client'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { FaFireAlt } from 'react-icons/fa'
+import { FaStar } from 'react-icons/fa'
 
 import Flickity from 'react-flickity-component'
 
-import '../../flickity.css'
+import '../../assets/css/flickity.css'
 
 const flickityOptions = {
   cellAlign: "left",
@@ -41,7 +41,7 @@ const TopRatedMovies = () => {
 
   return (
     <div style={{ gridArea: 'top-rated-movies', marginTop: '2rem' }}>
-      <SectionTitle sectionTitle="Top Rated Movies" icon={<FaFireAlt size="1.25rem" style={{ marginLeft: '.75rem' }} color="orange" />}></SectionTitle>
+      <SectionTitle sectionTitle="Top Rated Movies" icon={<FaStar size="1.25rem" style={{ marginLeft: '.75rem' }} color="orange" />}></SectionTitle>
       <Flickity
         className={'carousel'} // default ''
         elementType={'div'} // default 'div'
@@ -51,7 +51,7 @@ const TopRatedMovies = () => {
         static // default false
       >
         {topRatedMovies.map((trendingMovie, index) => (
-          <Link key={index} to={`/movie/${index}`} onClick={() => console.log(index)}>
+          <Link key={index} to={`/movie/${trendingMovie.id}`} onClick={() => console.log(index)}>
             <MoviePoster src={`https://image.tmdb.org/t/p/w300${trendingMovie.poster_path}`} />
           </Link>
         ))}
