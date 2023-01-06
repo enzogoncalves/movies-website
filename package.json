@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mui/material": "^5.11.3",
     "flickity": "^2.3.0",
     "jquery": "^3.6.2",
     "react": "^18.2.0",

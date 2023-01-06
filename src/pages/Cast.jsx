@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Section } from '../components/Section/styles'
 import { Link, useParams } from 'react-router-dom'
 import { HiArrowSmLeft } from 'react-icons/hi'
-import { IoFastFood, IoPerson } from 'react-icons/io5'
+import { IoPerson } from 'react-icons/io5'
 
 import "../assets/css/tailwind.css"
 
