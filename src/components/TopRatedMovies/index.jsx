@@ -51,7 +51,7 @@ const TopRatedMovies = () => {
         static // default false
       >
         {topRatedMovies.map((trendingMovie, index) => (
-          <Link key={index} to={`/movie/${trendingMovie.id}`} onClick={() => console.log(index)}>
+          <Link key={index} to={`/movie/${trendingMovie.id}`}>
             <MoviePoster src={`https://image.tmdb.org/t/p/w300${trendingMovie.poster_path}`} />
           </Link>
         ))}

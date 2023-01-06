@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 import { Section } from '../components/Section/styles'
 import styled from 'styled-components'
 
-import "../assets/css/movie.css"
+import "../assets/css/tailwind.css"
 
 import Flickity from 'react-flickity-component'
-
-import '../assets/css/flickity.css'
 
 const flickityOptions = {
   cellAlign: "left",
@@ -18,44 +16,31 @@ const flickityOptions = {
   freeScroll: true,
 }
 
-
-const Box = styled.div``
-
-const Overview = styled.div``
-
-const Title = styled.h2`
-  font-size: 2rem;
-  font-weight: 700;
-  color: #efefef;
-`
-
 const Movie = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState()
-  const [movieImages, setMovieImages] = useState()
   const [movieCredits, setMovieCredits] = useState()
-  const [movieReviews, setMovieReviews] = useState()
+  const [movieKeywords, setMovieKeywords] = useState()
+  const [movieRecommendations, setMovieRecommendations] = useState();
 
   useEffect(() => {
     const getMovieData = async () => {
       const movieData = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=c2b569d95e4b2013348fb2f4430655a5&language=en-US`)
       const movieRes = await movieData.json();
 
-      const movieImagesData = await fetch(`https://api.themoviedb.org/3/movie/${id}/images?api_key=c2b569d95e4b2013348fb2f4430655a5&include_image_language=en`)
-      const movieImagesRes = await movieImagesData.json();
-
       const movieCreditsData = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=c2b569d95e4b2013348fb2f4430655a5&language=en-US`)
       const movieCreditsRes = await movieCreditsData.json();
 
-      const movieReviewsData = await fetch(`https://api.themoviedb.org/3/movie/${id}/reviews?api_key=c2b569d95e4b2013348fb2f4430655a5&language=en-US`)
-      const movieReviewsRes = await movieReviewsData.json();
-      // movieReviewsRes.results.sort((a, b) => b.author_details.rating - a.author_details.rating)
-      console.log(movieReviewsRes.results)
+      const movieKeyWordsData = await fetch(`https://api.themoviedb.org/3/movie/${id}/keywords?api_key=c2b569d95e4b2013348fb2f4430655a5`)
+      const movieKeywordsRes = await movieKeyWordsData.json()
+
+      const movieRecommendationsData = await fetch(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=c2b569d95e4b2013348fb2f4430655a5&language=en-US&page=1`)
+      const movieRecommendationsRes = await movieRecommendationsData.json()
 
       setMovie(movieRes)
-      setMovieImages(movieImagesRes)
       setMovieCredits(movieCreditsRes)
-      setMovieReviews(movieReviewsRes.results)
+      setMovieKeywords(movieKeywordsRes.keywords)
+      setMovieRecommendations(movieRecommendationsRes.results)
     }
 
     getMovieData()
@@ -144,12 +129,12 @@ const Movie = () => {
   return (
     <Section>
       {movie &&
-        <Box className='p-8 flex items-center gap-8 relative overflow-hidden'>
+        <div className='p-8 flex items-center gap-8 relative overflow-hidden'>
           <img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} className='absolute left-0 top-0 h-full w-full object-cover z-0 blur-md' alt="movie backdrop" />
           <div className='absolute left-0 top-0 h-full w-full z-0 bg-movieBackground opacity-60'></div>
-          <img src={`https://image.tmdb.org/t/p/w300${movieImages.posters[2].file_path}`} className='relative z-10 rounded-md h-fit' alt="movie poster" />
-          <Overview className='relative z-10'>
-            <Title>{movie.title} <span className='text-[#999] text-xl'>({formatDate(movie.release_date).year})</span></Title>
+          <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} className='relative z-10 rounded-md h-fit w-[300px]' alt="movie poster" />
+          <div className='relative z-10'>
+            <h2 className='text-3xl font-bold text-[#efefef] mb-2'>{movie.title} <span className='text-[#999] text-xl'>({formatDate(movie.release_date).year})</span></h2>
             <div className='flex gap-4 items-center'>
               <span style={{ border: '1px solid #999', color: '#999', padding: '2px' }}>PG-13</span><span>{formatDate(movie.release_date).date}</span><span>{formatGenres(movie.genres)}</span><span>{formateMovieDuration(movie.runtime)}</span>
             </div>
@@ -176,56 +161,96 @@ const Movie = () => {
                 )
               })}
             </div>
-          </Overview>
-        </Box>
-      }
-      {movieCredits &&
-        <div className='mt-4 pb-4'>
-          <h2 className='text-xl font-semibold mb-2'>Main Cast</h2>
-          <Flickity
-            className={'carousel'} // default ''
-            elementType={'div'} // default 'div'
-            options={flickityOptions} // takes flickity options {}
-            disableImagesLoaded={false} // default false
-            reloadOnUpdate // default false
-            static // default false
-          >
-            {movieCredits.cast.slice(0, 10).map((cast, index) => {
-              return (
-                <div className='flex flex-col rounded-md overflow-hidden shrink-0 max-w-[125px] mr-3' key={index}>
-                  <img src={`https://image.tmdb.org/t/p/w300${cast.profile_path}`} alt="cast profile picture" />
-                  <div className='p-2'>
-                    <p className='font-semibold'>{cast.name}</p>
-                    <span className='text-sm'>{cast.character}</span>
-                  </div>
-                </div>
-              )
-            })}
-          </Flickity>
+          </div>
         </div>
       }
-      {/* {movieReviews &&
+      <div className='grid grid-cols-[1fr_auto]'>
         <div>
-          <h2 className='text-xl font-semibold mb-2'>Reviews</h2>
-          <Flickity
-            className={'carousel'} // default ''
-            elementType={'div'} // default 'div'
-            options={flickityOptions} // takes flickity options {}
-            disableImagesLoaded={false} // default false
-            reloadOnUpdate // default false
-            static // default false
-          >
-            {movieReviews.map((review, index) => {
-              return (
-                <div key={index}>
-
-                </div>
-              )
-            })}
-          </Flickity>
+          {movieCredits &&
+            <div className='mt-4 pb-4'>
+              <h2 className='text-xl font-semibold mb-2'>Main Cast</h2>
+              <Flickity
+                className={'carousel'} // default ''
+                elementType={'div'} // default 'div'
+                options={flickityOptions} // takes flickity options {}
+                disableImagesLoaded={false} // default false
+                reloadOnUpdate // default false
+                static // default false
+              >
+                {movieCredits.cast.slice(0, 10).map((cast, index) => {
+                  return (
+                    <div className='flex flex-col rounded-md overflow-hidden shrink-0 max-w-[125px] mr-3' key={index}>
+                      <img src={`https://image.tmdb.org/t/p/w300${cast.profile_path}`} alt="cast profile picture" />
+                      <div className='p-2'>
+                        <p className='font-semibold'>{cast.name}</p>
+                        <span className='text-sm'>{cast.character}</span>
+                      </div>
+                    </div>
+                  )
+                })}
+              </Flickity>
+              <NavLink to={`/movie/${id}/cast`}>Full Cast & Crew</NavLink>
+            </div>
+          }
+          {movieRecommendations &&
+            <div className='mt-4'>
+              <h2 className='text-xl font-semibold mb-2'>Recommendations</h2>
+              <Flickity
+                className={'carousel'} // default ''
+                elementType={'div'} // default 'div'
+                options={flickityOptions} // takes flickity options {}
+                disableImagesLoaded={false} // default false
+                reloadOnUpdate // default false
+                static // default false
+              >
+                {movieRecommendations.map((recommendationMovie, index) => {
+                  return (
+                    <div key={index} className='flex flex-col rounded-md overflow-hidden shrink-0 max-w-[125px] mr-3'>
+                      <NavLink to={`/movie/${recommendationMovie.id}`} reloadDocument>
+                        <img src={`https://image.tmdb.org/t/p/original/${recommendationMovie.poster_path}`} alt="movie poster" />
+                      </NavLink>
+                      <div className='p-2'>
+                        <p className='font-semibold'>{recommendationMovie.title}</p>
+                      </div>
+                    </div>
+                  )
+                })}
+              </Flickity>
+            </div>
+          }
         </div>
-      } */}
-
+        {movie && movieKeywords &&
+          <div className='max-w-[250px] p-4 relative'>
+            <div className='absolute top-0 -left-10 h-full w-10 z-10 bg-gradient-to-l from-[#1A161F] to-transparent'></div>
+            <p className='flex flex-col mb-4'>
+              <span className='font-semibold'>Status</span>
+              <span>{movie.status}</span>
+            </p>
+            <p className='flex flex-col mb-4'>
+              <span className='font-semibold'>Original Language</span>
+              <span>{movie.original_language}</span>
+            </p>
+            <p className='flex flex-col mb-4'>
+              <span className='font-semibold'>Budget</span>
+              <span>${new Intl.NumberFormat('de-DE').format(movie.budget)}</span>
+            </p>
+            <p className='flex flex-col mb-4'>
+              <span className='font-semibold'>Revenue</span>
+              <span>${new Intl.NumberFormat('de-DE').format(movie.revenue)}</span>
+            </p>
+            <div>
+              <span className='font-semibold'>KeyWords</span>
+              <div className='flex flex-wrap pr-2 gap-2'>
+                {movieKeywords.map((keyword, index) => {
+                  return (
+                    <span key={index} className='text-sm bg-[#444] p-1 rounded-sm'>{keyword.name}</span>
+                  )
+                })}
+              </div>
+            </div>
+          </div>
+        }
+      </div>
     </Section >
   )
 }
