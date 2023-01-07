@@ -5,6 +5,7 @@ import MovieCredits from '../components/MovieCredits'
 import MovieRecommendations from '../components/MovieRecommendations'
 import MovieKeywords from '../components/movieKeywords'
 import MovieHeader from '../components/MovieHeader'
+import Loading from '../components/Loading'
 
 import "../assets/css/tailwind.css"
 
@@ -36,27 +37,30 @@ const Movie = () => {
     }
 
     getMovieData()
-
   }, [])
 
 
 
   return (
     <Section>
-      {movie &&
-        <MovieHeader movie={movie} movieCredits={movieCredits} />
+      {movie
+        ? <MovieHeader movie={movie} movieCredits={movieCredits} />
+        : <Loading type='movieHeader' />
       }
       <div className='grid grid-cols-[1fr_auto]'>
         <div>
-          {movieCredits &&
-            <MovieCredits movieCredits={movieCredits} id={id} />
+          {movieCredits
+            ? <MovieCredits movieCredits={movieCredits} id={id} />
+            : <Loading />
           }
-          {movieRecommendations &&
-            (movieRecommendations.length > 0 && <MovieRecommendations movieRecommendations={movieRecommendations} />)
+          {movieRecommendations
+            ? (movieRecommendations.length > 0 && <MovieRecommendations movieRecommendations={movieRecommendations} />)
+            : <Loading />
           }
         </div>
-        {movie && movieKeywords &&
-          <MovieKeywords movie={movie} movieKeywords={movieKeywords} />
+        {(movie && movieKeywords)
+          ? <MovieKeywords movie={movie} movieKeywords={movieKeywords} />
+          : <Loading type='movieKeywords' />
         }
       </div>
     </Section >

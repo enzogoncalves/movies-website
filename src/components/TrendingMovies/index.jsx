@@ -25,20 +25,7 @@ const MoviePoster = styled.img`
   cursor: pointer;
 `
 
-const TrendingMovies = () => {
-  const [trendingMovies, setTrendingMovies] = useState([])
-
-  useEffect(() => {
-    const getTrendingMovies = async () => {
-      const movieData = await fetch('https://api.themoviedb.org/3/trending/movie/day?api_key=c2b569d95e4b2013348fb2f4430655a5')
-      const movies = await movieData.json()
-
-      setTrendingMovies(movies.results)
-    }
-
-    getTrendingMovies()
-  }, [])
-
+const TrendingMovies = ({ trendingMovies }) => {
   return (
     <div style={{ gridArea: 'trending-movies' }}>
       <SectionTitle sectionTitle="Trending Movies" icon={<FaFireAlt size="1.25rem" style={{ marginLeft: '.75rem' }} color="orange" />}></SectionTitle>

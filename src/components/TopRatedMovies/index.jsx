@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import ReactDOM from 'react-dom/client'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { FaStar } from 'react-icons/fa'
@@ -25,20 +24,7 @@ const MoviePoster = styled.img`
   cursor: pointer;
 `
 
-const TopRatedMovies = () => {
-  const [topRatedMovies, setTopRatedMovies] = useState([])
-
-  useEffect(() => {
-    const getTopRatedMovies = async () => {
-      const movieData = await fetch('https://api.themoviedb.org/3/movie/top_rated?api_key=c2b569d95e4b2013348fb2f4430655a5&language=en-US&page=1&region=US')
-      const movies = await movieData.json()
-
-      setTopRatedMovies(movies.results)
-    }
-
-    getTopRatedMovies()
-  }, [])
-
+const TopRatedMovies = ({ topRatedMovies }) => {
   return (
     <div style={{ gridArea: 'top-rated-movies', marginTop: '2rem' }}>
       <SectionTitle sectionTitle="Top Rated Movies" icon={<FaStar size="1.25rem" style={{ marginLeft: '.75rem' }} color="orange" />}></SectionTitle>
