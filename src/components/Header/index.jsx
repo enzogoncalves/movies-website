@@ -2,10 +2,10 @@ import React from 'react'
 import * as C from './styles'
 import { NavLink } from 'react-router-dom'
 
-const Header = ({ links }) => {
+const Header = ({ links, logoTitle }) => {
   return (
     <C.Header>
-      <C.Logo>Movies</C.Logo>
+      <C.Logo>{logoTitle}</C.Logo>
       <C.HeaderList>
         {links.map((link, index) => (
           <NavLink key={index} to={link.linkTo} style={({ isActive }) => {

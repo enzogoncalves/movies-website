@@ -2,9 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { FaStar } from 'react-icons/fa'
-
 import Flickity from 'react-flickity-component'
-
+import "../../assets/css/tailwind.css"
 import '../../assets/css/flickity.css'
 
 const flickityOptions = {
@@ -20,7 +19,6 @@ import SectionTitle from '../SectionTitle'
 
 const MoviePoster = styled.img`
   max-height: 200px;
-  margin-right: .5rem;
   cursor: pointer;
 `
 
@@ -36,9 +34,10 @@ const TopRatedMovies = ({ topRatedMovies }) => {
         reloadOnUpdate // default false
         static // default false
       >
-        {topRatedMovies.map((trendingMovie, index) => (
-          <Link key={index} to={`/movie/${trendingMovie.id}`}>
-            <MoviePoster src={`https://image.tmdb.org/t/p/w300${trendingMovie.poster_path}`} />
+        {topRatedMovies.map((topRatedMovie, index) => (
+          <Link key={index} to={`/movie/${topRatedMovie.id}`} className='mr-2 cursor-pointer w-[133px] h-max rounded-sm overflow-hidden'>
+            <MoviePoster src={`https://image.tmdb.org/t/p/w300${topRatedMovie.poster_path}`} />
+            <p className='w-full p-2 bg-neutral-700'>{topRatedMovie.title}</p>
           </Link>
         ))}
       </Flickity>

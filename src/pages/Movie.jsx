@@ -9,7 +9,10 @@ import Loading from '../components/Loading'
 
 import "../assets/css/tailwind.css"
 
+
 const Movie = () => {
+  document.title = 'Movie'
+
   const { id } = useParams();
   const [movie, setMovie] = useState()
   const [movieCredits, setMovieCredits] = useState()

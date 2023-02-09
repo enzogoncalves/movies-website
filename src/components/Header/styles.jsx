@@ -19,7 +19,7 @@ export const Header = styled.header`
 export const Logo = styled.h1`
   font-size: 1.5rem;
   font-weight: 700;
-  margin-right: 5rem;
+  width: 160px;
 `
 
 export const HeaderList = styled.ul`

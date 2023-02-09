@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Section } from './styles'
 import SectionTitle from '../SectionTitle'
 import { GiPopcorn } from 'react-icons/gi'

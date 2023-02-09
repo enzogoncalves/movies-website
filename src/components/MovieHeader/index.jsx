@@ -90,7 +90,7 @@ const MovieHeader = ({ movie, movieCredits }) => {
       <div className='relative z-10'>
         <h2 className='text-3xl font-bold text-[#efefef] mb-2'>{movie.title} <span className='text-[#999] text-xl'>({formatDate(movie.release_date).year})</span></h2>
         <div className='flex gap-4 items-center'>
-          <span style={{ border: '1px solid #999', color: '#999', padding: '2px' }}>PG-13</span><span>{formatDate(movie.release_date).date}</span><span>{formatGenres(movie.genres)}</span><span>{formateMovieDuration(movie.runtime)}</span>
+          <span>{formatDate(movie.release_date).date}</span><span>{formatGenres(movie.genres)}</span><span>{formateMovieDuration(movie.runtime)}</span>
         </div>
         <p className='text-[#bbb] italic mt-4'>{movie.tagline}</p>
         <div className='flex flex-col gap-2 mb-4'>

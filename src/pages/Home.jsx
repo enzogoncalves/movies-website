@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { Section } from '../components/Section/styles'
-import TrendingMovies from '../components/TrendingMovies'
 import UpComingMovies from '../components/UpComingMovies'
-import TopRatedMovies from '../components/TopRatedMovies'
 import Loading from '../components/Loading'
-
+import MovieCarousel from '../components/MovieCarousel'
+import { FaFireAlt, FaStar } from 'react-icons/fa'
 
 const Home = () => {
+  document.title = 'Home'
+
   const [trendingMovies, setTrendingMovies] = useState()
   const [upcomingMovies, setUpcomingMovies] = useState()
   const [topRatedMovies, setTopRatedMovies] = useState()
@@ -44,16 +45,16 @@ const Home = () => {
       gridTemplateAreas: `'trending-movies upcoming-movies' 'top-rated-movies upcoming-movies'`
     }}>
       {trendingMovies
-        ? <TrendingMovies trendingMovies={trendingMovies} />
+        ? <MovieCarousel type="movie" option={true} data={trendingMovies} sectionTitle="Trending Movies" icon={<FaFireAlt size="1.25rem" style={{ marginLeft: '.75rem' }} color="orange" />} />
+        : <Loading />
+      }
+      {topRatedMovies
+        ? <MovieCarousel type="movie" option={false} data={topRatedMovies} sectionTitle="Top Rated Movies" icon={<FaStar size="1.25rem" style={{ marginLeft: '.75rem' }} color="orange" />} />
         : <Loading />
       }
       {upcomingMovies
         ? <UpComingMovies upcomingMovies={upcomingMovies} />
         : <Loading type='upcomingMovies' />
-      }
-      {topRatedMovies
-        ? <TopRatedMovies topRatedMovies={topRatedMovies} />
-        : <Loading />
       }
     </Section>
   )

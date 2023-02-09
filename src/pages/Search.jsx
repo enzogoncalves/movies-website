@@ -7,6 +7,8 @@ import { MdHideImage } from 'react-icons/md'
 // import { }
 
 const Search = () => {
+  document.title = 'Search'
+
   const [moviesResearched, setMoviesResearched] = useState()
   const [query, setQuery] = useState('')
 

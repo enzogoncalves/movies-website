@@ -3,9 +3,8 @@ import ReactDOM from 'react-dom/client'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { FaFireAlt } from 'react-icons/fa'
-
 import Flickity from 'react-flickity-component'
-
+import "../../assets/css/tailwind.css"
 import '../../assets/css/flickity.css'
 
 const flickityOptions = {
@@ -21,7 +20,6 @@ import SectionTitle from '../SectionTitle'
 
 const MoviePoster = styled.img`
   max-height: 200px;
-  margin-right: .5rem;
   cursor: pointer;
 `
 
@@ -38,8 +36,9 @@ const TrendingMovies = ({ trendingMovies }) => {
         static // default false
       >
         {trendingMovies.map((trendingMovie, index) => (
-          <Link key={index} to={`/movie/${trendingMovie.id}`}>
+          <Link key={index} to={`/movie/${trendingMovie.id}`} className='mr-2 cursor-pointer w-[133px] rounded-sm overflow-hidden'>
             <MoviePoster src={`https://image.tmdb.org/t/p/w300${trendingMovie.poster_path}`} />
+            <p className='w-full p-2 bg-neutral-700'>{trendingMovie.title}</p>
           </Link>
         ))}
       </Flickity>
