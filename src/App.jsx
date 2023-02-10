@@ -4,23 +4,23 @@ import {
 } from "react-router-dom";
 
 import Home from './pages/Home';
-import Discovery from './pages/Discovery';
 import ErrorPage from './pages/ErrorPage';
 import Movie from './pages/Movie';
 import Cast from './pages/Cast';
 import Search from './pages/Search';
 import LateralNavBar from './components/LateralNavBar'
 import Header from './components/Header'
+import Tv from './pages/TvShow';
+import TvShows from './pages/TvShows';
 
 import './index.css'
-import TvShows from './pages/TvShows';
 
 function App() {
   const [lateralNavBarItems, setLateralNavBarItems] = useState([])
   const [headerLinks, setHeaderLinks] = useState([])
 
   useEffect(() => {
-    setLateralNavBarItems([{ title: 'Home', active: true, linkTo: '/' }, { title: 'Discovery', active: false, linkTo: '/discovery' }, { title: 'Community', active: false, linkTo: '/community' }, { title: 'Search', active: false, linkTo: '/search' }])
+    setLateralNavBarItems([{ title: 'Home', active: true, linkTo: '/' }, { title: 'Search', active: false, linkTo: '/search' }])
 
     setHeaderLinks([{ link: 'Home', linkTo: '/', active: true }, { link: 'TV Shows', linkTo: '/tv-shows', active: false }])
   }, [])
@@ -31,11 +31,6 @@ function App() {
       element: <><Home /><Header links={headerLinks} logoTitle="Home" />
         <LateralNavBar items={lateralNavBarItems} /></>,
       errorElement: <ErrorPage />,
-    },
-    {
-      path: "discovery",
-      element: <><Discovery /><Header links={headerLinks} logoTitle="Discovery" />
-        <LateralNavBar items={lateralNavBarItems} /></>,
     },
     {
       path: "movie/:id",
@@ -56,6 +51,12 @@ function App() {
       path: "tv-shows",
       element: <><TvShows /><Header links={headerLinks} logoTitle="Tv Shows" />
         <LateralNavBar items={lateralNavBarItems} /></>
+    },
+    {
+      path: "tv-show/:id",
+      element: <><Tv /><Header links={headerLinks} logoTitle="Tv Shows" />
+        <LateralNavBar items={lateralNavBarItems} /></>,
+      errorElement: <ErrorPage />,
     }
   ]);
 

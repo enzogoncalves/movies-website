@@ -20,12 +20,12 @@ const flickityOptions = {
 
 import SectionTitle from '../SectionTitle'
 
-const MoviePoster = styled.img`
+const MediaPoster = styled.img`
   height: 199px;
   cursor: pointer;
 `
 
-const MovieCarousel = ({ type, data, sectionTitle, icon, option }) => {
+const MediaCarousel = ({ type, data, sectionTitle, icon, option }) => {
   if (type === "movie") {
     return (
       <Div className='mb-4' option={option}>
@@ -40,7 +40,7 @@ const MovieCarousel = ({ type, data, sectionTitle, icon, option }) => {
         >
           {data.map((movie, index) => (
             <Link key={index} to={`/movie/${movie.id}`} className='mr-2 cursor-pointer w-[133px] rounded-sm overflow-hidden '>
-              <MoviePoster src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} />
+              <MediaPoster src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} />
               <p className='w-full p-2 bg-neutral-700 min-h-[88px]'>{movie.title}</p>
             </Link>
           ))}
@@ -61,7 +61,7 @@ const MovieCarousel = ({ type, data, sectionTitle, icon, option }) => {
         >
           {data.map((tvShow, index) => (
             <Link key={index} to={`/tv-show/${tvShow.id}`} className='mr-2 cursor-pointer w-[133px] rounded-sm overflow-hidden '>
-              <MoviePoster src={`https://image.tmdb.org/t/p/w300${tvShow.poster_path}`} />
+              <MediaPoster src={`https://image.tmdb.org/t/p/w300${tvShow.poster_path}`} />
               <p className='w-full p-2 bg-neutral-700 min-h-[88px]'>{tvShow.name}</p>
             </Link>
           ))}
@@ -71,4 +71,4 @@ const MovieCarousel = ({ type, data, sectionTitle, icon, option }) => {
   }
 }
 
-export default MovieCarousel
+export default MediaCarousel

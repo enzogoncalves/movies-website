@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { NavLink, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { Section } from '../components/Section/styles'
-import MovieCredits from '../components/MovieCredits'
-import MovieRecommendations from '../components/MovieRecommendations'
-import MovieKeywords from '../components/movieKeywords'
-import MovieHeader from '../components/MovieHeader'
+import MediaCredits from '../components/MediaCredits'
+import MediaRecommendations from '../components/MediaRecommendations'
+import MediaKeywords from '../components/MediaKeywords'
+import MediaHeader from '../components/MediaHeader'
 import Loading from '../components/Loading'
 
 import "../assets/css/tailwind.css"
@@ -47,23 +47,23 @@ const Movie = () => {
   return (
     <Section>
       {movie
-        ? <MovieHeader movie={movie} movieCredits={movieCredits} />
-        : <Loading type='movieHeader' />
+        ? <MediaHeader media={movie} mediaCredits={movieCredits} type='movie' />
+        : <Loading type='mediaHeader' />
       }
       <div className='grid grid-cols-[1fr_auto]'>
         <div>
           {movieCredits
-            ? <MovieCredits movieCredits={movieCredits} id={id} />
+            ? <MediaCredits mediaCredits={movieCredits} id={id} />
             : <Loading />
           }
           {movieRecommendations
-            ? (movieRecommendations.length > 0 && <MovieRecommendations movieRecommendations={movieRecommendations} />)
+            ? (movieRecommendations.length > 0 && <MediaRecommendations mediaRecommendations={movieRecommendations} type="movie" />)
             : <Loading />
           }
         </div>
         {(movie && movieKeywords)
-          ? <MovieKeywords movie={movie} movieKeywords={movieKeywords} />
-          : <Loading type='movieKeywords' />
+          ? <MediaKeywords media={movie} mediaKeywords={movieKeywords} />
+          : <Loading type='mediaKeywords' />
         }
       </div>
     </Section >

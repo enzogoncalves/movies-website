@@ -12,7 +12,7 @@ const flickityOptions = {
   freeScroll: true,
 }
 
-const MovieRecommendations = ({ movieRecommendations }) => {
+const MediaRecommendations = ({ mediaRecommendations, type }) => {
   return (
     <div className='mt-4'>
       <h2 className='text-xl font-semibold mb-2'>Recommendations</h2>
@@ -24,10 +24,10 @@ const MovieRecommendations = ({ movieRecommendations }) => {
         reloadOnUpdate // default false
         static // default false
       >
-        {movieRecommendations.map((recommendationMovie, index) => {
+        {mediaRecommendations.map((recommendationMovie, index) => {
           return (
             <div key={index} className='flex flex-col rounded-md overflow-hidden shrink-0 max-w-[125px] mr-3'>
-              <NavLink to={`/movie/${recommendationMovie.id}`} reloadDocument>
+              <NavLink to={`/${type}/${recommendationMovie.id}`} reloadDocument>
                 <img src={`https://image.tmdb.org/t/p/original/${recommendationMovie.poster_path}`} alt="movie poster" />
               </NavLink>
               <div className='p-2'>
@@ -41,4 +41,4 @@ const MovieRecommendations = ({ movieRecommendations }) => {
   )
 }
 
-export default MovieRecommendations
+export default MediaRecommendations

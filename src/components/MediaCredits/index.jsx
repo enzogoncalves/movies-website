@@ -13,7 +13,7 @@ const flickityOptions = {
   freeScroll: true,
 }
 
-const MovieCredits = ({ movieCredits, id }) => {
+const MediaCredits = ({ mediaCredits, id }) => {
   return (
     <div className='mt-4 pb-4'>
       <h2 className='text-xl font-semibold mb-2'>Main Cast</h2>
@@ -25,7 +25,7 @@ const MovieCredits = ({ movieCredits, id }) => {
         reloadOnUpdate // default false
         static // default false
       >
-        {movieCredits.cast.slice(0, 10).map((cast, index) => {
+        {mediaCredits.cast.slice(0, 10).map((cast, index) => {
           return (
             <div className='flex flex-col rounded-md overflow-hidden shrink-0 max-w-[125px] mr-3' key={index}>
               {cast.profile_path
@@ -46,4 +46,4 @@ const MovieCredits = ({ movieCredits, id }) => {
   )
 }
 
-export default MovieCredits
+export default MediaCredits

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Section } from '../components/Section/styles'
-import UpComingMovies from '../components/UpComingMovies'
 import Loading from '../components/Loading'
-import MovieCarousel from '../components/MovieCarousel'
+import MediaCarousel from '../components/MediaCarousel'
 import { FaFireAlt, FaStar } from 'react-icons/fa'
 
 import "../assets/css/tailwind.css"
@@ -34,11 +33,11 @@ const TvShows = () => {
       gridArea: 'movie-content',
     }}>
       {trendingTvShows
-        ? <MovieCarousel type="tv-show" data={trendingTvShows} sectionTitle="Trending Tv Shows" icon={<FaFireAlt size="1.25rem" style={{ marginLeft: '.75rem' }} color="orange" />} />
+        ? <MediaCarousel type="tv-show" data={trendingTvShows} sectionTitle="Trending Tv Shows" icon={<FaFireAlt size="1.25rem" style={{ marginLeft: '.75rem' }} color="orange" />} />
         : <Loading />
       }
       {topRatedTvShows
-        ? <MovieCarousel type="tv-show" data={topRatedTvShows} sectionTitle="Top Rated Tv Shows" icon={<FaStar size="1.25rem" style={{ marginLeft: '.75rem' }} color="orange" />} />
+        ? <MediaCarousel type="tv-show" data={topRatedTvShows} sectionTitle="Top Rated Tv Shows" icon={<FaStar size="1.25rem" style={{ marginLeft: '.75rem' }} color="orange" />} />
         : <Loading />
       }
     </Section>
