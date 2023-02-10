@@ -6,7 +6,7 @@ import "../../assets/css/tailwind.css"
 import '../../assets/css/flickity.css'
 
 const Div = styled.div`
-  grid-area: ${props => props.option ? "trending-movies" : "top-rated-movies"};
+  grid-area: ${props => props.option == "trending-movies" ? "trending-movies" : "top-rated-movies"};
 `
 
 const flickityOptions = {

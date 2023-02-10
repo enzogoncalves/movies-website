@@ -45,11 +45,11 @@ const Home = () => {
       gridTemplateAreas: `'trending-movies upcoming-movies' 'top-rated-movies upcoming-movies'`
     }}>
       {trendingMovies
-        ? <MediaCarousel type="movie" option={true} data={trendingMovies} sectionTitle="Trending Movies" icon={<FaFireAlt size="1.25rem" style={{ marginLeft: '.75rem' }} color="orange" />} />
+        ? <MediaCarousel type="movie" option={"trending-movies"} data={trendingMovies} sectionTitle="Trending Movies" icon={<FaFireAlt size="1.25rem" style={{ marginLeft: '.75rem' }} color="orange" />} />
         : <Loading />
       }
       {topRatedMovies
-        ? <MediaCarousel type="movie" option={false} data={topRatedMovies} sectionTitle="Top Rated Movies" icon={<FaStar size="1.25rem" style={{ marginLeft: '.75rem' }} color="orange" />} />
+        ? <MediaCarousel type="movie" option={"topRatedMovies"} data={topRatedMovies} sectionTitle="Top Rated Movies" icon={<FaStar size="1.25rem" style={{ marginLeft: '.75rem' }} color="orange" />} />
         : <Loading />
       }
       {upcomingMovies
