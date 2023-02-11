@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
-export const Section = styled.div`
+const MovieSection = styled.div`
   display: flex;
   flex-direction: column;
   padding-left: 1rem;
   grid-area: upcoming-movies;
 `
+export default MovieSection
