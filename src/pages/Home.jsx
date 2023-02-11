@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Section } from '../components/Section/styles'
-// import UpComingMovies from '../components/UpComingMovies'
-// import MovieSection from '../components/UpComingMovies/styles'
 import SectionTitle from '../components/SectionTitle'
 import { GiPopcorn } from 'react-icons/gi'
 import UpcomingMovie from '../components/UpcomingMovie'
@@ -16,7 +14,6 @@ const MovieSection = styled.div`
   padding-left: 1rem;
   grid-area: upcoming-movies;
 `
-
 
 const Home = () => {
   document.title = 'Home'
