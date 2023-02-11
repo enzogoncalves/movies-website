@@ -52,10 +52,10 @@ const Home = () => {
         ? <MediaCarousel type="movie" option={"topRatedMovies"} data={topRatedMovies} sectionTitle="Top Rated Movies" icon={<FaStar size="1.25rem" style={{ marginLeft: '.75rem' }} color="orange" />} />
         : <Loading />
       }
-      {upcomingMovies
+      {/* {upcomingMovies
         ? <UpComingMovies upcomingMovies={upcomingMovies} />
         : <Loading type='upcomingMovies' />
-      }
+      } */}
     </Section>
   )
 }
