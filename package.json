@@ -18,7 +18,8 @@
     "react-flickity-component": "^4.0.1",
     "react-icons": "^4.7.1",
     "react-router-dom": "^6.8.1",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.6",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
