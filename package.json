@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@mui/material": "^5.11.8",
-    "flickity": "^3.0.0",
+    "flickity": "^2.3.0",
     "jquery": "^3.6.3",
     "outdated": "^0.1.1",
     "react": "^18.2.0",
