@@ -2,6 +2,8 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import Flickity from 'react-flickity-component'
 import "../../assets/css/tailwind.css"
+import { MdHideImage } from 'react-icons/md'
+
 
 const flickityOptions = {
   cellAlign: "left",
@@ -28,7 +30,10 @@ const MediaRecommendations = ({ mediaRecommendations, type }) => {
           return (
             <div key={index} className='flex flex-col rounded-md overflow-hidden shrink-0 max-w-[125px] mr-3'>
               <NavLink to={`/${type}/${recommendationMovie.id}`} reloadDocument>
-                <img src={`https://image.tmdb.org/t/p/original/${recommendationMovie.poster_path}`} alt="movie poster" />
+                {recommendationMovie.poster_path
+                  ? <img src={`https://image.tmdb.org/t/p/original/${recommendationMovie.poster_path}`} alt="movie poster" />
+                  : <MdHideImage className='h-[187px] w-full'></MdHideImage>
+                }
               </NavLink>
               <div className='p-2'>
                 <p className='font-semibold'>{recommendationMovie.title}</p>

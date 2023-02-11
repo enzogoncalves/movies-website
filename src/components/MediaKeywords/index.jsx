@@ -14,14 +14,14 @@ const MediaKeywords = ({ media, mediaKeywords }) => {
         <span>{media.original_language}</span>
       </p>
       {
-        media.budget &&
+        media.budget !== 0 &&
         <p className='flex flex-col mb-4'>
           <span className='font-semibold'>Budget</span>
           <span>${new Intl.NumberFormat('de-DE').format(media.budget)}</span>
         </p>
       }
       {
-        media.revenue &&
+        media.revenue !== 0 &&
         <p className='flex flex-col mb-4'>
           <span className='font-semibold'>Revenue</span>
           <span>${new Intl.NumberFormat('de-DE').format(media.revenue)}</span>

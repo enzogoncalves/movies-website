@@ -19,8 +19,6 @@ const TvShows = () => {
       const trendingTvShowsFetch = await fetch('https://api.themoviedb.org/3/trending/tv/day?api_key=c2b569d95e4b2013348fb2f4430655a5')
       const trendingTvShowsData = await trendingTvShowsFetch.json()
 
-      console.log(trendingTvShowsData)
-
       setTrendingTvShows(trendingTvShowsData.results)
       setTopRatedTvShows(topRatedTvShowsData.results)
     }

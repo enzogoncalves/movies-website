@@ -37,8 +37,6 @@ const Movie = () => {
       setTvCredits(tvCreditsRes)
       setTvKeywords(tvKeywordsRes.results)
       setTvRecommendations(tvRecommendationsRes.results)
-
-      console.log(tvCreditsRes)
     }
 
     getMovieData()
@@ -54,10 +52,10 @@ const Movie = () => {
       }
       <div className='grid grid-cols-[1fr_auto]'>
         <div>
-          {/* {tvCredits
+          {tvCredits
             ? <MediaCredits mediaCredits={tvCredits} id={id} />
             : <Loading />
-          } */}
+          }
           {tvRecommendations
             ? (tvRecommendations.length > 0 && <MediaRecommendations mediaRecommendations={tvRecommendations} type="tv-show" />)
             : <Loading />
