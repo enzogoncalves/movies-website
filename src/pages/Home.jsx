@@ -1,22 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Section } from '../components/Section/styles'
-// import UpComingMovies from '../components/UpComingMovies'
-// import MovieSection from '../components/UpComingMovies/styles'
-import SectionTitle from '../components/SectionTitle'
-import { GiPopcorn } from 'react-icons/gi'
-import UpcomingMovie from '../components/UpcomingMovie'
+import UpComingMovies from '../components/UpComingMovies'
 import Loading from '../components/Loading'
 import MediaCarousel from '../components/MediaCarousel'
 import { FaFireAlt, FaStar } from 'react-icons/fa'
-import styled from "styled-components";
-
-const MovieSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding-left: 1rem;
-  grid-area: upcoming-movies;
-`
-
 
 const Home = () => {
   document.title = 'Home'
@@ -65,12 +52,7 @@ const Home = () => {
         : <Loading />
       }
       {upcomingMovies
-        ? <MovieSection>
-          <SectionTitle sectionTitle="Upcoming Movies" icon={<GiPopcorn size="1.25rem" style={{ marginLeft: '.75rem' }} />} />
-          {upcomingMovies.map((upcomingMovie, index) => (
-            <UpcomingMovie upcomingMovie={upcomingMovie} key={index} />
-          ))}
-        </MovieSection>
+        ? <UpComingMovies upcomingMovies={upcomingMovies} />
         : <Loading type='upcomingMovies' />
       }
     </Section>
