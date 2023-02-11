@@ -31,7 +31,6 @@ const Home = () => {
       const trendingMoviesFetch = await fetch('https://api.themoviedb.org/3/trending/movie/day?api_key=c2b569d95e4b2013348fb2f4430655a5')
       const trendingMoviesData = await trendingMoviesFetch.json()
 
-
       setTrendingMovies(trendingMoviesData.results)
       setUpcomingMovies(upcomingMoviesData.slice(0, 5))
       setTopRatedMovies(topRatedMoviesData.results)
