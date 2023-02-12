@@ -48,22 +48,22 @@ const Movie = () => {
     <Section>
       {movie
         ? <MediaHeader media={movie} mediaCredits={movieCredits} type='movie' />
-        : <Loading type='mediaHeader' />
+        : <Loading type='mediaHeader' active={true} />
       }
       <div className='grid grid-cols-[1fr_auto]'>
         <div>
           {movieCredits
             ? <MediaCredits mediaCredits={movieCredits} id={id} />
-            : <Loading />
+            : <Loading active={true} />
           }
           {movieRecommendations
             ? (movieRecommendations.length > 0 && <MediaRecommendations mediaRecommendations={movieRecommendations} type="movie" />)
-            : <Loading />
+            : <Loading active={true} />
           }
         </div>
         {(movie && movieKeywords)
           ? <MediaKeywords media={movie} mediaKeywords={movieKeywords} />
-          : <Loading type='mediaKeywords' />
+          : <Loading type='mediaKeywords' active={true} />
         }
       </div>
     </Section >

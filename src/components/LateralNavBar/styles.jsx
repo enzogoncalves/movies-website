@@ -15,8 +15,9 @@ export const NavBar = styled.nav`
   width: 85px;
   overflow: hidden; 
   transition: width .1s;
-  box-shadow: 0 0 6px #00000079;
+  box-shadow: 0 0 6px rgba(0, 0, 0, .6);
   background-color: #1A161F;
+  display: block;
 
   :hover {
     width: 13rem;
@@ -24,6 +25,10 @@ export const NavBar = styled.nav`
     ${ListSpan} {
       display: block;
     }
+  }
+
+  @media (max-width: 1189px) {
+    display: none;
   }
 `
 

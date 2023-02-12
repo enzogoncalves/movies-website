@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Section } from '../components/Section/styles'
 import SectionTitle from '../components/SectionTitle'
 import { GiPopcorn } from 'react-icons/gi'
-import UpcomingMovie from '../components/UpcomingMovie'
+import { UpcomingMovie } from '../components/UpcomingMovie'
 import Loading from '../components/Loading'
 import MediaCarousel from '../components/MediaCarousel'
 import { FaFireAlt, FaStar } from 'react-icons/fa'
@@ -15,7 +15,7 @@ const MovieSection = styled.div`
   grid-area: upcoming-movies;
 `
 
-const Home = () => {
+const Home = ({ windowWidth }) => {
   document.title = 'Home'
 
   const [trendingMovies, setTrendingMovies] = useState()
@@ -38,7 +38,7 @@ const Home = () => {
       const trendingMoviesData = await trendingMoviesFetch.json()
 
       setTrendingMovies(trendingMoviesData.results)
-      setUpcomingMovies(upcomingMoviesData.slice(0, 5))
+      setUpcomingMovies(upcomingMoviesData)
       setTopRatedMovies(topRatedMoviesData.results)
     }
 
@@ -46,29 +46,27 @@ const Home = () => {
   }, [])
 
   return (
-    <Section style={{
-      gridArea: 'movie-content',
-      display: 'grid',
-      gridTemplateColumns: '1fr auto',
-      gridTemplateRows: 'auto 1fr',
-      gridTemplateAreas: `'trending-movies upcoming-movies' 'top-rated-movies upcoming-movies'`
-    }}>
+    <Section display="grid">
       {trendingMovies
         ? <MediaCarousel type="movie" option={"trending-movies"} data={trendingMovies} sectionTitle="Trending Movies" icon={<FaFireAlt size="1.25rem" style={{ marginLeft: '.75rem' }} color="orange" />} />
-        : <Loading />
+        : <Loading active={true} />
       }
       {topRatedMovies
         ? <MediaCarousel type="movie" option={"topRatedMovies"} data={topRatedMovies} sectionTitle="Top Rated Movies" icon={<FaStar size="1.25rem" style={{ marginLeft: '.75rem' }} color="orange" />} />
-        : <Loading />
+        : <Loading active={true} />
       }
-      {upcomingMovies
+      {upcomingMovies && windowWidth <= 1189
+        ? <MediaCarousel type="upcoming-movies" option={"upcoming-movies"} data={upcomingMovies} sectionTitle="Upcoming Movies" icon={<GiPopcorn size="1.25rem" style={{ marginLeft: '.75rem' }} />} />
+        : <Loading active={windowWidth <= 1189} />
+      }
+      {upcomingMovies && windowWidth >= 1189
         ? <MovieSection>
           <SectionTitle sectionTitle="Upcoming Movies" icon={<GiPopcorn size="1.25rem" style={{ marginLeft: '.75rem' }} />} />
-          {upcomingMovies.map((upcomingMovie, index) => (
+          {upcomingMovies.slice(0, 5).map((upcomingMovie, index) => (
             <UpcomingMovie upcomingMovie={upcomingMovie} key={index} />
           ))}
         </MovieSection>
-        : <Loading type='upcomingMovies' />
+        : <Loading type='upcomingMovies' active={windowWidth >= 1189} />
       }
     </Section>
   )

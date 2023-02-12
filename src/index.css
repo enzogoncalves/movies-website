@@ -27,3 +27,14 @@ ul {
 .carousel-cell {
   margin-right: .5rem;
 }
+
+.header-link {
+  font-size: 14px;
+  text-align: center;
+}
+
+@media (min-width: 465px) {
+  .header-link {
+    font-size: 1rem;
+  }
+}
