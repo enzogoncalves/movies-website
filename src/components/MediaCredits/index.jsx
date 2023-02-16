@@ -27,15 +27,15 @@ const MediaCredits = ({ mediaCredits, id }) => {
       >
         {mediaCredits.cast.slice(0, 10).map((cast, index) => {
           return (
-            <div className='flex flex-col rounded-md overflow-hidden shrink-0 max-w-[125px] mr-3' key={index}>
+            <div className='flex flex-col rounded-md overflow-hidden shrink-0 max-w-[100px] md:max-w-[125px] mr-3' key={index}>
               {cast.profile_path
                 ? <img src={`https://image.tmdb.org/t/p/w300${cast.profile_path}`} alt="cast profile picture" />
-                : <IoPerson className='w-[125px] h-[175px] p-[10px] rounded-md text-[#444] bg-[#efefef]' />
+                : <IoPerson className='w-full h-[150px] md:h-[175px] p-[10px] rounded-md text-[#444] bg-[#efefef]' />
               }
 
-              <div className='p-2'>
+              <div className='p-1 md:p-2'>
                 <p className='font-semibold'>{cast.name}</p>
-                <span className='text-sm'>{cast.character}</span>
+                <span className='text-xs md:text-sm'>{cast.character}</span>
               </div>
             </div>
           )

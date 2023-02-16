@@ -4,24 +4,24 @@ import { NavLink } from 'react-router-dom'
 import { IoSearchOutline } from 'react-icons/io5'
 import { MdOndemandVideo, MdOutlineVideoLibrary } from 'react-icons/md'
 
-const LateralNavBarItem = ({ item, index }) => {
-  function returnIcons(i) {
-    switch (i) {
-      case 0:
-        return (
-          <MdOndemandVideo className='list-item-icon' />
-        )
-      case 1:
-        return (
-          <MdOutlineVideoLibrary className='list-item-icon' />
-        )
-      case 2:
-        return (
-          <IoSearchOutline className='list-item-icon' />
-        )
-    }
+function returnIcons(i) {
+  switch (i) {
+    case 0:
+      return (
+        <MdOndemandVideo className='list-item-icon' />
+      )
+    case 1:
+      return (
+        <MdOutlineVideoLibrary className='list-item-icon' />
+      )
+    case 2:
+      return (
+        <IoSearchOutline className='list-item-icon' />
+      )
   }
+}
 
+const LateralNavBarItem = ({ item, index }) => {
   return (
     <C.ListItem>
       <NavLink to={item.linkTo} className="link">

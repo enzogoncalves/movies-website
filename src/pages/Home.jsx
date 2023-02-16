@@ -15,6 +15,7 @@ const MovieSection = styled.div`
   grid-area: upcoming-movies;
 `
 
+
 const Home = ({ windowWidth }) => {
   document.title = 'Home'
 

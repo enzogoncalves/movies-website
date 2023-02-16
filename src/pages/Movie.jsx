@@ -10,7 +10,7 @@ import Loading from '../components/Loading'
 import "../assets/css/tailwind.css"
 
 
-const Movie = () => {
+const Movie = ({ windowWidth }) => {
   document.title = 'Movie'
 
   const { id } = useParams();
@@ -42,15 +42,13 @@ const Movie = () => {
     getMovieData()
   }, [])
 
-
-
   return (
     <Section>
       {movie
         ? <MediaHeader media={movie} mediaCredits={movieCredits} type='movie' />
         : <Loading type='mediaHeader' active={true} />
       }
-      <div className='grid grid-cols-[1fr_auto]'>
+      <div className='grid grid-cols-1 lg:grid-cols-[1fr_auto]'>
         <div>
           {movieCredits
             ? <MediaCredits mediaCredits={movieCredits} id={id} />
@@ -62,7 +60,7 @@ const Movie = () => {
           }
         </div>
         {(movie && movieKeywords)
-          ? <MediaKeywords media={movie} mediaKeywords={movieKeywords} />
+          ? <MediaKeywords media={movie} mediaKeywords={movieKeywords} windowWidth={windowWidth} />
           : <Loading type='mediaKeywords' active={true} />
         }
       </div>

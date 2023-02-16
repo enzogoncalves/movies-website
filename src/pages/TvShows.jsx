@@ -5,6 +5,8 @@ import MediaCarousel from '../components/MediaCarousel'
 import { FaFireAlt, FaStar } from 'react-icons/fa'
 
 import "../assets/css/tailwind.css"
+
+
 const TvShows = () => {
   document.title = 'Tv Shows'
 

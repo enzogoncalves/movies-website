@@ -39,7 +39,7 @@ function App() {
     },
     {
       path: "movie/:id",
-      element: <><Movie /><Header links={headerLinks} />
+      element: <><Movie windowWidth={windowWidth} /><Header links={headerLinks} />
         <LateralNavBar items={lateralNavBarItems} /></>,
     },
     {
@@ -59,7 +59,7 @@ function App() {
     },
     {
       path: "tv-show/:id",
-      element: <><Tv /><Header links={headerLinks} />
+      element: <><Tv windowWidth={windowWidth} /><Header links={headerLinks} />
         <LateralNavBar items={lateralNavBarItems} /></>,
       errorElement: <ErrorPage />,
     }

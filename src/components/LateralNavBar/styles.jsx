@@ -27,7 +27,7 @@ export const NavBar = styled.nav`
     }
   }
 
-  @media (max-width: 1189px) {
+  @media (max-width: 1188px) {
     display: none;
   }
 `

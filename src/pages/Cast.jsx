@@ -6,8 +6,76 @@ import { IoPerson } from 'react-icons/io5'
 
 import "../assets/css/tailwind.css"
 
+function filterCrew(movieCrew) {
+  const filteredCrew = { departments: [] };
+  movieCrew.forEach((crew, index) => {
+    let departmentIndex = -1;
+    filteredCrew.departments.find((department, i) => {
+      if (department.name == crew.department) {
+        departmentIndex = i;
+      } else {
+        departmentIndex = -1;
+      }
+    })
+
+    if (departmentIndex != -1) {
+
+    }
+  })
+
+  // movieCrew.forEach((crew) => {
+  //   {let departmentIndex = false;
+  //   let crewIndex = false;
+  //   filteredCrew.departments.find((element, i) => {
+  //     if (element.department == crew.department) {
+  //       departmentIndex = i;
+  //       return element.department == crew.department
+  //     } else {
+  //       departmentIndex = false;
+  //     }
+
+  //     element.crew.find((element2, j) => {
+  //       if (element2.name == crew.name) {
+  //         crewIndex = j;
+  //         departmentIndex = i;
+  //       } else {
+  //         crewIndex = false;
+  //         departmentIndex = false;
+  //       }
+  //     })
+  //   });
+
+  //   if (departmentIndex === false) {
+  //     filteredCrew.departments.push({ department: crew.department, crew: [crew] })
+  //     console.log('a')
+  //     return;
+  //   }
+
+  //   if (crewIndex !== false) {
+  //     filteredCrew.departments[departmentIndex].crew[crewIndex].job == [filteredCrew.departments[departmentIndex].crew[crewIndex].job, crew.job];
+  //     return;
+  //   }
+
+  //   if (departmentIndex !== false) {
+  //     filteredCrew.departments[departmentIndex].crew.push(crew)
+  //     console.log('c')
+  //     return;
+  //   }
+  // })
+
+  // let totalCrew = 0;
+  // filteredCrew.departments.forEach((department) => {
+  //   totalCrew += department.crew.length;
+  // })
+
+  // filteredCrew.total = totalCrew;
+  // console.log(filteredCrew)
+  // return filteredCrew}
+}
 
 const Cast = () => {
+  document.title = "Cast & Crew"
+
   const { id } = useParams();
   const [movie, setMovie] = useState()
   const [movieCredits, setMovieCredits] = useState()
@@ -29,73 +97,6 @@ const Cast = () => {
     getMovieData()
 
   }, [])
-
-  function filterCrew(movieCrew) {
-    const filteredCrew = { departments: [] };
-    movieCrew.forEach((crew, index) => {
-      let departmentIndex = -1;
-      filteredCrew.departments.find((department, i) => {
-        if (department.name == crew.department) {
-          departmentIndex = i;
-        } else {
-          departmentIndex = -1;
-        }
-      })
-
-      if (departmentIndex != -1) {
-
-      }
-    })
-
-    // movieCrew.forEach((crew) => {
-    //   {let departmentIndex = false;
-    //   let crewIndex = false;
-    //   filteredCrew.departments.find((element, i) => {
-    //     if (element.department == crew.department) {
-    //       departmentIndex = i;
-    //       return element.department == crew.department
-    //     } else {
-    //       departmentIndex = false;
-    //     }
-
-    //     element.crew.find((element2, j) => {
-    //       if (element2.name == crew.name) {
-    //         crewIndex = j;
-    //         departmentIndex = i;
-    //       } else {
-    //         crewIndex = false;
-    //         departmentIndex = false;
-    //       }
-    //     })
-    //   });
-
-    //   if (departmentIndex === false) {
-    //     filteredCrew.departments.push({ department: crew.department, crew: [crew] })
-    //     console.log('a')
-    //     return;
-    //   }
-
-    //   if (crewIndex !== false) {
-    //     filteredCrew.departments[departmentIndex].crew[crewIndex].job == [filteredCrew.departments[departmentIndex].crew[crewIndex].job, crew.job];
-    //     return;
-    //   }
-
-    //   if (departmentIndex !== false) {
-    //     filteredCrew.departments[departmentIndex].crew.push(crew)
-    //     console.log('c')
-    //     return;
-    //   }
-    // })
-
-    // let totalCrew = 0;
-    // filteredCrew.departments.forEach((department) => {
-    //   totalCrew += department.crew.length;
-    // })
-
-    // filteredCrew.total = totalCrew;
-    // console.log(filteredCrew)
-    // return filteredCrew}
-  }
 
   return (
     <Section>
