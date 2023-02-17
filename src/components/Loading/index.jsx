@@ -11,7 +11,7 @@ const Loading = ({ type, active }) => {
     )
   } else if (type == 'mediaKeywords' && active) {
     return (
-      <div className='animate-pulse w-[200px] h-[376px] flex items-center justify-center bg-neutral-700 ml-4'>
+      <div className='animate-pulse w-full lg:w-[200px] h-60 lg:h-[376px] flex items-center justify-center bg-neutral-700 lg:ml-4'>
         <FaSpinner className='w-8 h-8 animate-spin' />
       </div>
     )

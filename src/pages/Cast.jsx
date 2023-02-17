@@ -3,6 +3,7 @@ import { Section } from '../components/Section/styles'
 import { Link, useParams } from 'react-router-dom'
 import { HiArrowSmLeft } from 'react-icons/hi'
 import { IoPerson } from 'react-icons/io5'
+import { MdHideImage } from 'react-icons/md'
 
 import "../assets/css/tailwind.css"
 
@@ -73,39 +74,54 @@ function filterCrew(movieCrew) {
   // return filteredCrew}
 }
 
-const Cast = () => {
+const Cast = ({ type }) => {
   document.title = "Cast & Crew"
 
   const { id } = useParams();
-  const [movie, setMovie] = useState()
-  const [movieCredits, setMovieCredits] = useState()
+  const [media, setMedia] = useState()
+  const [movieCredits, setMediaCredits] = useState()
 
   useEffect(() => {
-    const getMovieData = async () => {
-      const movieData = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=c2b569d95e4b2013348fb2f4430655a5&language=en-US`)
-      const movieRes = await movieData.json();
+    const getMediaData = async () => {
+      const mediaData = await fetch(`https://api.themoviedb.org/3/${type}/${id}?api_key=c2b569d95e4b2013348fb2f4430655a5&language=en-US`)
+      const mediaRes = await mediaData.json();
 
-      const movieCreditsData = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=c2b569d95e4b2013348fb2f4430655a5&language=en-US`)
-      const movieCreditsRes = await movieCreditsData.json();
+      const mediaCreditsData = await fetch(`https://api.themoviedb.org/3/${type}/${id}/credits?api_key=c2b569d95e4b2013348fb2f4430655a5&language=en-US`)
+      const mediaCreditsRes = await mediaCreditsData.json();
 
-      setMovie(movieRes)
-      setMovieCredits(movieCreditsRes)
+      setMedia(mediaRes)
+      setMediaCredits(mediaCreditsRes)
 
-      filterCrew(movieCreditsRes.crew)
+      filterCrew(mediaCreditsRes.crew)
     }
 
-    getMovieData()
-
+    getMediaData()
   }, [])
 
   return (
     <Section>
-      {movie &&
-        <div className='flex gap-4 items-center pt-4 pb-4 pl-6 pr-6 bg-[#444]'>
-          <img src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt="movie poster" className='max-h-[100px]' />
+      {media && type == 'movie' &&
+        <div className='flex flex-col sm:flex-row gap-2 sm:gap-4 items-center pt-4 pb-4 pl-6 pr-6 bg-[#444]'>
+          {media.poster_path
+            ? <img src={`https://image.tmdb.org/t/p/w300${media.poster_path}`} alt="movie poster" className='max-h-[100px]' />
+            : <MdHideImage className='h-[100px] w-[66px]'></MdHideImage>
+          }
           <div className='flex flex-col gap-4'>
-            <h2 className='text-3xl font-bold text-[#efefef]'>{movie.title} <span className='text-[#999] text-xl'>({movie.release_date.split('-')[0]})</span></h2>
-            <Link to={`/movie/${id}`} className='flex items-center gap-1 text-gray-300 font-semibold'><HiArrowSmLeft className='text-2xl' />Back to main</Link>
+            <h2 className='text-xl sm:text-3xl font-bold text-[#efefef]'>{media.title} <span className='text-[#999] text-xl'>({media.release_date.split('-')[0]})</span></h2>
+            <Link to={`/movie/${id}`} className='flex items-center gap-1 text-gray-300 font-semibold hover:underline'><HiArrowSmLeft className='text-2xl' />Back to main</Link>
+          </div>
+        </div>
+      }
+
+      {media && type == 'tv' &&
+        <div className='flex flex-col sm:flex-row gap-2 sm:gap-4 items-center pt-4 pb-4 pl-6 pr-6 bg-[#444]'>
+          {media.poster_path
+            ? <img src={`https://image.tmdb.org/t/p/w300${media.poster_path}`} alt="tv-show poster" className='max-h-[100px]' />
+            : <MdHideImage className='h-[100px] w-[66px]'></MdHideImage>
+          }
+          <div className='flex flex-col gap-4'>
+            <h2 className='text-xl sm:text-3xl font-bold text-[#efefef]'>{media.name} <span className='text-[#999] text-xl'>({media.first_air_date.split('-')[0]})</span></h2>
+            <Link to={`/tv-show/${id}`} className='flex items-center gap-1 text-gray-300 font-semibold hover:underline'><HiArrowSmLeft className='text-2xl' />Back to main</Link>
           </div>
         </div>
       }

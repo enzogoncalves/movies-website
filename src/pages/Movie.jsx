@@ -51,7 +51,7 @@ const Movie = ({ windowWidth }) => {
       <div className='grid grid-cols-1 lg:grid-cols-[1fr_auto]'>
         <div>
           {movieCredits
-            ? <MediaCredits mediaCredits={movieCredits} id={id} />
+            ? <MediaCredits mediaCredits={movieCredits} id={id} type={'movie'} />
             : <Loading active={true} />
           }
           {movieRecommendations

@@ -44,7 +44,7 @@ function App() {
     },
     {
       path: "movie/:id/cast",
-      element: <><Cast /><Header links={headerLinks} />
+      element: <><Cast type='movie' /><Header links={headerLinks} />
         <LateralNavBar items={lateralNavBarItems} /></>,
     },
     {
@@ -62,7 +62,12 @@ function App() {
       element: <><Tv windowWidth={windowWidth} /><Header links={headerLinks} />
         <LateralNavBar items={lateralNavBarItems} /></>,
       errorElement: <ErrorPage />,
-    }
+    },
+    {
+      path: "tv-show/:id/cast",
+      element: <><Cast type='tv' /><Header links={headerLinks} />
+        <LateralNavBar items={lateralNavBarItems} /></>,
+    },
   ]);
 
   return (

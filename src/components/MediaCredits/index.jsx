@@ -13,7 +13,7 @@ const flickityOptions = {
   freeScroll: true,
 }
 
-const MediaCredits = ({ mediaCredits, id }) => {
+const MediaCredits = ({ mediaCredits, id, type }) => {
   return (
     <div className='mt-4 pb-4'>
       <h2 className='text-xl font-semibold mb-2'>Main Cast</h2>
@@ -41,7 +41,7 @@ const MediaCredits = ({ mediaCredits, id }) => {
           )
         })}
       </Flickity>
-      <NavLink to={`/movie/${id}/cast`}>Full Cast & Crew</NavLink>
+      <NavLink to={`/${type}/${id}/cast`} className='hover:underline'>Full Cast & Crew</NavLink>
     </div>
   )
 }
