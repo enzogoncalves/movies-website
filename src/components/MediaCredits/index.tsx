@@ -47,7 +47,7 @@ export const MediaCredits = ({ mediaCredits, id, type }: MediaCredits) => {
           )
         })}
       </Flickity>
-      <NavLink to={`/${type}/${id}/cast`} className='hover:underline'>Full Cast & Crew</NavLink>
+      <NavLink to={`/${type}/${id}/cast`} className='hover:underline'>Full Cast</NavLink>
     </div>
   )
 }
