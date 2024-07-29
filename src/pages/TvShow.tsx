@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Loading } from '../components/Loading'
 import { MediaCredits } from '../components/MediaCredits'
@@ -7,20 +7,17 @@ import { MediaKeywords } from '../components/MediaKeywords'
 import { MediaRecommendations } from '../components/MediaRecommendations'
 
 import "../assets/css/tailwind.css"
+import { Section } from '../components/Section/styles'
+import { Cast } from '../interfaces/Cast'
+import { Crew } from '../interfaces/Crew'
+import { Keyword } from '../interfaces/Keywords'
+import { MovieDetails } from '../interfaces/Movie'
 import { TvShowDetails } from '../interfaces/TvShow'
 import { api } from '../libs/axios'
-import { Keyword } from '../interfaces/Keywords'
-import { Crew } from '../interfaces/Crew'
-import { Cast } from '../interfaces/Cast'
-import { Section } from '../components/Section/styles'
-import { AppContext } from '../contexts/AppContext'
-import { MovieDetails } from '../interfaces/Movie'
 
 const api_key = import.meta.env.VITE_TMDB_API_KEY;
 
 export const Tv = () => {
-	const { windowWidth } = useContext(AppContext)
-
   document.title = 'Tv Show'
 
   const { id } = useParams();
