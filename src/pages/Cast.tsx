@@ -10,6 +10,7 @@ import { Movie } from '../interfaces/Movie'
 import { TvShow } from '../interfaces/TvShow'
 import { api } from '../libs/axios'
 import { Section } from '../components/Section/styles'
+import { Helmet } from "react-helmet-async"
 
 const api_key = import.meta.env.VITE_TMDB_API_KEY;
 
@@ -85,8 +86,6 @@ interface CastProps {
 }
 
 export const CastPage = ({ type }: CastProps) => {
-  document.title = "Cast & Crew"
-
   const { id } = useParams();
   const [media, setMedia] = useState<TvShow | Movie>()
   const [mediaCredits, setMediaCredits] = useState<Cast[]>()
@@ -109,8 +108,13 @@ export const CastPage = ({ type }: CastProps) => {
 		getMediaCreditsData()
   }, [])
 
+	const tvShowTitle = (media as TvShow | null)?.name
+	const movieTitle = (media as Movie | null)?.title
+
   return (
     <Section>
+			<Helmet title={`Cast of ${tvShowTitle ?? movieTitle}`}/>
+
       {media && type == 'movie' && 
         <div className='flex flex-col sm:flex-row gap-2 sm:gap-4 items-center pt-4 pb-4 pl-6 pr-6 bg-[#444]'>
           {media.poster_path

@@ -5,12 +5,12 @@ import * as C from './styles'
 import { AppContext } from '../../contexts/AppContext'
 
 export function LateralNavBar() {
-	const { lateralNavBarItems } = useContext(AppContext)
+	const { navigationItems } = useContext(AppContext)
 
   return (
     <C.NavBar>
       <C.List>
-        {lateralNavBarItems.map((item, index) => (
+        {navigationItems.map((item, index) => (
           <LateralNavBarItem key={index} item={item} index={index} />
         ))}
       </C.List>

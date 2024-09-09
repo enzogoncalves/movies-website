@@ -42,8 +42,8 @@ export const MediaKeywords = ({ media, mediaKeywords }: MediaKeywordsProps) => {
 						<span>${new Intl.NumberFormat('de-DE').format(media.revenue)}</span>
 					</p>
 				} */}
-				<div>
-					<span className='font-semibold'>KeyWords</span>
+				{mediaKeywords.length > 0 && <div>
+					<span className='font-semibold'>Keywords</span>
 					<div className='flex flex-wrap pr-2 gap-2 mt-1'>
 						{mediaKeywords.map((keyword, index) => {
 							return (
@@ -52,6 +52,7 @@ export const MediaKeywords = ({ media, mediaKeywords }: MediaKeywordsProps) => {
 						})}
 					</div>
 				</div>
+				}
 			</div>
     </div>
   )

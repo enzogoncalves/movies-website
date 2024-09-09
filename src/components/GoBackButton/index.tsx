@@ -1,13 +1,13 @@
-import { NavLink } from "react-router-dom";
-import { Button } from "./styles";
 import { FaArrowLeft } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { Button } from "./styles";
 
 export function GoBackButton() {
+	const navigate = useNavigate()
+
 	return (
-		<NavLink to={'/'}>
-			<Button>
-				<FaArrowLeft size={'32px'}/>
-			</Button>
-		</NavLink>
+		<Button onClick={() => navigate(-1)}>
+			<FaArrowLeft size={'32px'}/>
+		</Button>
 	)
 }

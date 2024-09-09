@@ -1,17 +1,19 @@
 import { useContext } from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { AppContext } from '../../contexts/AppContext'
 import * as C from './styles'
 
 export const Header = () => {
-	const { headerLinks } = useContext(AppContext)
+	const { navigationItems } = useContext(AppContext)
 
   return (
     <C.Header>
       <C.Div>
-        <C.Logo>MediaFy</C.Logo>
+				<Link to={'/'}>
+        	<C.Logo>MediaFy</C.Logo>
+				</Link>
         <C.HeaderList>
-          {headerLinks.map((link, index) => (
+          {navigationItems.map((link, index) => (
             <NavLink key={index} to={link.linkTo} className='header-link' style={({ isActive }) => {
               return isActive
                 ? { padding: '.75rem .5rem', fontWeight: 500, color: "#efefef", }

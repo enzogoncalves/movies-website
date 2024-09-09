@@ -10,6 +10,7 @@ import { Movie } from '../interfaces/Movie'
 import { TvShow } from '../interfaces/TvShow'
 import { api } from '../libs/axios'
 import { Section } from '../components/Section/styles'
+import { Helmet } from "react-helmet-async"
 
 const api_key = import.meta.env.VITE_TMDB_API_KEY;
 
@@ -17,8 +18,6 @@ export const Search = () => {
 	const [ mediasResearched, setMediasResearched ] = useState<Movie[] | TvShow[]>([])
 	const [ mediaType, setMediaType ] = useState<'tv' | 'movie'>('movie')
   
-	document.title = 'Search'
-
 	const searchFormSchema = zod.object({
 		query: zod.string({required_error: "Preencha este campo!"}),
 		option: zod.enum(['tv', 'movie'])
@@ -47,6 +46,8 @@ export const Search = () => {
 
   return (
     <Section>
+			<Helmet title="Search"/>
+
       <form onSubmit={handleSubmit(handleSearchQuery)} className='flex flex-col gap-4'>
 				<div className='flex gap-4 items-center border-2 border-gray-500 py-4 px-6 rounded-full focus-within:border-[#efefefs]'>
 					<IoSearchOutline size={'22px'} color='#efefef' />

@@ -8,13 +8,17 @@ import { Router } from "./router";
 
 import './assets/css/flickity.css'
 import "./assets/css/tailwind.css"
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 export function App() {
   return (
-    <BrowserRouter>
-			<AppContextProvider>
-				<Router />
-			</AppContextProvider>
-		</BrowserRouter>
+		<HelmetProvider>
+			<Helmet titleTemplate="%s | MediaFy" />
+			<BrowserRouter>
+				<AppContextProvider>
+					<Router />
+				</AppContextProvider>
+			</BrowserRouter>
+		</HelmetProvider>
   )
 }

@@ -14,14 +14,14 @@ import { Keyword } from '../interfaces/Keywords'
 import { MovieDetails } from '../interfaces/Movie'
 import { TvShowDetails } from '../interfaces/TvShow'
 import { api } from '../libs/axios'
+import { GoBackButton } from "../components/GoBackButton"
+import { Helmet } from "react-helmet-async"
 
 const api_key = import.meta.env.VITE_TMDB_API_KEY;
 
 export const Tv = () => {
-  document.title = 'Tv Show'
-
   const { id } = useParams();
-  const [tv, setTv] = useState()
+  const [tv, setTv] = useState<TvShowDetails | null>()
   const [tvCredits, setTvCredits] = useState<{ cast: Cast[], crew: Crew[]}>()
   const [tvKeywords, setTvKeywords] = useState<Keyword[]>()
   const [tvRecommendations, setTvRecommendations] = useState<TvShowDetails[] | MovieDetails[]>();
@@ -61,24 +61,28 @@ export const Tv = () => {
 
   return (
     <Section className='relative'>
+			<Helmet title={`${tv?.name ? tv.name : 'Tv Show'}`}/>
+
+		<GoBackButton />
+			
       {(tv && tvCredits)
         ? <MediaHeader media={tv} mediaCredits={tvCredits.crew} type='tv' />
-        : <Loading type='mediaHeader' active={true} />
+        : <Loading type='mediaHeader' />
       }
       <div className='grid grid-cols-1 lg:grid-cols-[1fr_auto] relative'>
 				<div>
           {tvCredits
             ? <MediaCredits mediaCredits={tvCredits.cast} id={id} type={'tv-show'} />
-            : <Loading active={true} />
+            : <Loading />
           }
           {tvRecommendations
             ? (tvRecommendations.length > 0 && <MediaRecommendations mediaRecommendations={tvRecommendations} type="tv-show" />)
-            : <Loading active={true} />
+            : <Loading />
           }
         </div>
         {(tv && tvKeywords)
           ? <MediaKeywords media={tv} mediaKeywords={tvKeywords}/>
-          : <Loading type='mediaKeywords' active={true} />
+          : <Loading type='mediaKeywords' />
         }
       </div>
 
