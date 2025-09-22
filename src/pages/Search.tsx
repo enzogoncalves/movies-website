@@ -19,7 +19,7 @@ export const Search = () => {
 	const [ mediaType, setMediaType ] = useState<'tv' | 'movie'>('movie')
   
 	const searchFormSchema = zod.object({
-		query: zod.string({required_error: "Preencha este campo!"}),
+		query: zod.string({error: "Preencha este campo!"}),
 		option: zod.enum(['tv', 'movie'])
 	})
 
