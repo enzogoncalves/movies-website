@@ -13,8 +13,6 @@ interface AppContextProviderProps {
 
 export function AppContextProvider({ children }: AppContextProviderProps) {
 	const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth)
-
-	console.log(windowWidth)
 	
   window.addEventListener('resize', () => {
 		setWindowWidth(window.innerWidth)

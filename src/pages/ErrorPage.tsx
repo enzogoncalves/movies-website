@@ -1,11 +1,9 @@
 import { NavLink, useRouteError } from 'react-router-dom';
 import "../assets/css/tailwind.css";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "@dr.pogodin/react-helmet";
 
 export const ErrorPage = () => {
   const error = useRouteError();
-  console.log(error)
- 
   return (
 		<>
 			<Helmet title="Error"/>

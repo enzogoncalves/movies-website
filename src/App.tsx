@@ -8,7 +8,7 @@ import { Router } from "./router";
 
 import './assets/css/flickity.css'
 import "./assets/css/tailwind.css"
-import { Helmet, HelmetProvider } from "react-helmet-async";
+import { Helmet, HelmetProvider } from "@dr.pogodin/react-helmet";
 
 export function App() {
   return (

@@ -10,7 +10,7 @@ import { Movie } from '../interfaces/Movie'
 import { TvShow } from '../interfaces/TvShow'
 import { api } from '../libs/axios'
 import { Section } from '../components/Section/styles'
-import { Helmet } from "react-helmet-async"
+import { Helmet } from "@dr.pogodin/react-helmet"
 
 const api_key = import.meta.env.VITE_TMDB_API_KEY;
 

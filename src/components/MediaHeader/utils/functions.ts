@@ -73,8 +73,6 @@ export function formatDate(releaseDate: string) {
 }
 
 export function formatMediaDuration(runtime: number) {
-	console.log(runtime)
-
   let hours = Math.floor(runtime / 60);
   let minutes = runtime - (hours * 60);
   if (minutes === 0) {

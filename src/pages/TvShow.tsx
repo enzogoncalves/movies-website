@@ -15,7 +15,7 @@ import { MovieDetails } from '../interfaces/Movie'
 import { TvShowDetails } from '../interfaces/TvShow'
 import { api } from '../libs/axios'
 import { GoBackButton } from "../components/GoBackButton"
-import { Helmet } from "react-helmet-async"
+import { Helmet } from "@dr.pogodin/react-helmet"
 
 const api_key = import.meta.env.VITE_TMDB_API_KEY;
 
@@ -56,8 +56,6 @@ export const Tv = () => {
 		getKeywordsData()
 		getTvRecommendationsData()
   }, [])
-
-	console.log(tvRecommendations)
 
   return (
     <Section className='relative'>

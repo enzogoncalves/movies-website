@@ -7,7 +7,7 @@ import "../assets/css/tailwind.css"
 import { Section } from '../components/Section/styles'
 import { TvShowDetails } from "../interfaces/TvShow"
 import { api } from "../libs/axios"
-import { Helmet } from "react-helmet-async"
+import { Helmet } from "@dr.pogodin/react-helmet"
 
 const api_key = import.meta.env.VITE_TMDB_API_KEY;
 

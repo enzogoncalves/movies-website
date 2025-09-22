@@ -14,7 +14,7 @@ import { MovieDetails } from '../interfaces/Movie'
 import { Section } from '../components/Section/styles'
 import { GoBackButton } from '../components/GoBackButton'
 import { api } from "../libs/axios"
-import { Helmet } from "react-helmet-async"
+import { Helmet } from "@dr.pogodin/react-helmet"
 
 const api_key = import.meta.env.VITE_TMDB_API_KEY;
 
@@ -45,8 +45,6 @@ export const Movie = () => {
 
 	async function getMovieKeywordsData() {
 		const response = await api.get<{ keywords: Keyword[] }>(`movie/${id}/keywords?api_key=${api_key}`)
-
-		console.log(response.data)
 
 		setMovieKeywords(response.data.keywords)
 	}

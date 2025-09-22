@@ -10,7 +10,7 @@ import { UpcomingMovie } from './components/UpcomingMovie'
 import { AppContext } from '../../contexts/AppContext'
 import { MovieDetails } from '../../interfaces/Movie'
 import { api } from '../../libs/axios'
-import { Helmet } from "react-helmet-async"
+import { Helmet } from "@dr.pogodin/react-helmet"
 
 const api_key = import.meta.env.VITE_TMDB_API_KEY;
 
@@ -59,8 +59,6 @@ export const Home = () => {
 		getUpcomingMoviesData()
 		getTrendingMoviesData()
   }, [])
-
-	console.log(trendingMovies)
 
   return (
     <HomeSection display="grid">
